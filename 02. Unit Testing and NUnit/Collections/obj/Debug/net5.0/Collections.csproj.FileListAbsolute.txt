@@ -1,0 +1,16 @@
+F:\QA Automation\QA Automation Homework\02. Unit Testing and NUnit\Collections\bin\Debug\net5.0\Collections.exe
+F:\QA Automation\QA Automation Homework\02. Unit Testing and NUnit\Collections\bin\Debug\net5.0\Collections.deps.json
+F:\QA Automation\QA Automation Homework\02. Unit Testing and NUnit\Collections\bin\Debug\net5.0\Collections.runtimeconfig.json
+F:\QA Automation\QA Automation Homework\02. Unit Testing and NUnit\Collections\bin\Debug\net5.0\Collections.runtimeconfig.dev.json
+F:\QA Automation\QA Automation Homework\02. Unit Testing and NUnit\Collections\bin\Debug\net5.0\Collections.dll
+F:\QA Automation\QA Automation Homework\02. Unit Testing and NUnit\Collections\bin\Debug\net5.0\Collections.pdb
+F:\QA Automation\QA Automation Homework\02. Unit Testing and NUnit\Collections\obj\Debug\net5.0\Collections.csproj.AssemblyReference.cache
+F:\QA Automation\QA Automation Homework\02. Unit Testing and NUnit\Collections\obj\Debug\net5.0\Collections.GeneratedMSBuildEditorConfig.editorconfig
+F:\QA Automation\QA Automation Homework\02. Unit Testing and NUnit\Collections\obj\Debug\net5.0\Collections.AssemblyInfoInputs.cache
+F:\QA Automation\QA Automation Homework\02. Unit Testing and NUnit\Collections\obj\Debug\net5.0\Collections.AssemblyInfo.cs
+F:\QA Automation\QA Automation Homework\02. Unit Testing and NUnit\Collections\obj\Debug\net5.0\Collections.csproj.CoreCompileInputs.cache
+F:\QA Automation\QA Automation Homework\02. Unit Testing and NUnit\Collections\obj\Debug\net5.0\Collections.dll
+F:\QA Automation\QA Automation Homework\02. Unit Testing and NUnit\Collections\obj\Debug\net5.0\refint\Collections.dll
+F:\QA Automation\QA Automation Homework\02. Unit Testing and NUnit\Collections\obj\Debug\net5.0\Collections.pdb
+F:\QA Automation\QA Automation Homework\02. Unit Testing and NUnit\Collections\obj\Debug\net5.0\Collections.genruntimeconfig.cache
+F:\QA Automation\QA Automation Homework\02. Unit Testing and NUnit\Collections\obj\Debug\net5.0\ref\Collections.dll
