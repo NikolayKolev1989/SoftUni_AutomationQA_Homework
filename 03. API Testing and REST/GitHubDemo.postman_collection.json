@@ -1,0 +1,359 @@
+{
+	"info": {
+		"_postman_id": "4019b458-09a7-4a0a-b871-20c2a00e0f5e",
+		"name": "GitHubDemo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21001673"
+	},
+	"item": [
+		{
+			"name": "Get_Issues",
+			"item": [
+				{
+					"name": "Get_All_Issues",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var body = pm.response.json();\r",
+									"console.log(body);\r",
+									"\r",
+									"pm.test(\"HTTP status\", function(){\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.github.com/repos/{{owner}}/{{repo}}/issues",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"repos",
+								"{{owner}}",
+								"{{repo}}",
+								"issues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Single_Issue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// print body in console\r",
+									"var body = pm.response.json();\r",
+									"console.log(body.url);\r",
+									"\r",
+									"pm.test(\"Response holds an issue object\", function(){\r",
+									"    let issue = pm.response.json();\r",
+									"    pm.expect(typeof(issue)).equals(\"object\");\r",
+									"    pm.expect(Number.isInteger(issue.id)).equals(true);\r",
+									"    pm.expect(typeof(issue.title)).equals(\"string\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.equal(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check status\", function(){\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"OK\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check Issue ID\", function(){\r",
+									"    pm.expect(body.id).equals(1237531790)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check Issue URL\", function(){\r",
+									"    pm.expect(body.url, \"Issue body url\").equal(\"https://api.github.com/repos/NikolayKolev1989/SoftUni_AutomationQA_Homework/issues/2\")\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.github.com/repos/{{owner}}/{{repo}}/issues/2",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"repos",
+								"{{owner}}",
+								"{{repo}}",
+								"issues",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Single_Issue_Comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.github.com/repos/{{owner}}/{{repo}}/issues/4/comments",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"repos",
+								"{{owner}}",
+								"{{repo}}",
+								"issues",
+								"4",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post_Issues",
+			"item": [
+				{
+					"name": "Create_New_Issue",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// print body in console\r",
+									"var body = pm.response.json();\r",
+									"console.log(body.url);\r",
+									"let expectedNumber = body.number;\r",
+									"\r",
+									"pm.test(\"Response holds an issue object\", function(){\r",
+									"    let issue = pm.response.json();\r",
+									"    pm.expect(typeof(issue)).equals(\"object\");\r",
+									"    pm.expect(Number.isInteger(issue.id)).equals(true);\r",
+									"    pm.expect(typeof(issue.title)).equals(\"string\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check status code\", function(){\r",
+									"    pm.expect(pm.response.code).to.be.equal(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check status\", function(){\r",
+									"    pm.expect(pm.response.status).to.be.equal(\"Created\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check Issue ID\", function(){\r",
+									"    pm.expect(body.id).to.be.greaterThan(1);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Check Issue URL\", function(){\r",
+									"    let expectedUrl = \"https://api.github.com/repos/NikolayKolev1989/SoftUni_AutomationQA_Homework/issues/\" + expectedNumber;\r",
+									"    pm.expect(body.url, \"Issue body url\").equal(expectedUrl);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"title\" : \"Another Issue Created with Postman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.github.com/repos/{{owner}}/{{repo}}/issues",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"repos",
+								"{{owner}}",
+								"{{repo}}",
+								"issues"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create_New_Issue_Comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n    \"body\" : \"Another comment created with Postman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.github.com/repos/{{owner}}/{{repo}}/issues/4/comments",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"repos",
+								"{{owner}}",
+								"{{repo}}",
+								"issues",
+								"4",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patch_Issues",
+			"item": [
+				{
+					"name": "Patch_Single_Issue",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\" : \"Edited title with Patch http method\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.github.com/repos/{{owner}}/{{repo}}/issues/6",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"repos",
+								"{{owner}}",
+								"{{repo}}",
+								"issues",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Close_Single_Issue",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"state\" : \"closed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.github.com/repos/{{owner}}/{{repo}}/issues/5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"repos",
+								"{{owner}}",
+								"{{repo}}",
+								"issues",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{token}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{owner}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
